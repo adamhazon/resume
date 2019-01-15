@@ -1,0 +1,30 @@
+@import '../../../../constants.scss';
+
+.roles-list {
+
+  .roles-header {
+    display: flex;
+    height: auto;
+
+    > span {
+      flex: 1;
+    }
+
+    .add-role-button {
+      flex: 0 0 auto;
+    }
+  }
+
+  .role-item {
+    border-bottom: 1px solid rgba(255,255,255,.12);
+
+    .role-dates {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    h5 {
+      color: mat-color($accent, A200);
+    }
+  }
+}

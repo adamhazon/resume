@@ -12,8 +12,8 @@ export class RolesService {
     id: 1,
     company: 'Seerene Inc',
     position: 'Senior Software Engineer',
-    startDate: '05-2017',
-    endDate: '12-2018',
+    startDate: '2017-05',
+    endDate: '2018-12',
     current: false,
     description: `
       • Worked in a SCRUM team, mainly on the Front-end side using Angular 4-6.

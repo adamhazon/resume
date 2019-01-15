@@ -8,6 +8,11 @@ import { RolesService } from './services/roles.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RolesListComponent, RolesDetailsComponent } from './components/roles';
 
+// Angular Material
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +23,10 @@ import { RolesListComponent, RolesDetailsComponent } from './components/roles';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatListModule,
+    MatButtonModule
   ],
   providers: [RolesService],
   bootstrap: [AppComponent]

@@ -1,2 +1,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// Override Angular Material list styles on Mobile
+@media (max-width: 600px) {
+  body .mat-list-base {
+
+    .mat-subheader {
+      padding: 16px 0;
+    }
+
+    .mat-list-item .mat-list-item-content {
+      padding: 0;
+    }
+  }
+}

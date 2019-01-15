@@ -1,3 +1,41 @@
-<p>
-  list works!
-</p>
+<p *ngIf="loading">Loading...</p>
+
+<mat-list class="roles-list" *ngIf="!loading
+  && roles && roles.length">
+  <h3 mat-subheader class="roles-header">
+    <span>Work experience</span>
+    <button mat-icon-button aria-label="Add Role"
+      class="add-role-button" (click)="addRole()">
+      <mat-icon>add_circle</mat-icon>
+    </button>
+  </h3>
+  <mat-divider></mat-divider>
+  <mat-list-item class="role-item"
+    *ngFor="let role of roles">
+    <h4 mat-line>{{ role.position }}</h4>
+    <h5 mat-line class="mat-accent">{{ role.company }}</h5>
+    <p mat-line class="role-dates">
+      {{ role.startDate | date: 'MMMM y' }}
+      - {{ role.endDate | date: 'MMMM y' }}
+    </p>
+    <button mat-icon-button aria-label="Edit Role"
+      class="edit" (click)="editRole(role)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Edit Role"
+      class="edit" (click)="deleteRole(role)">
+      <mat-icon>delete_forever</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
+
+<mat-list class="roles-list" *ngIf="!loading
+  && (!roles || roles && !roles.length)">
+    <h3 mat-subheader class="roles-header">
+      <span>No roles found</span>
+      <button mat-icon-button aria-label="Add Role"
+        class="add-role-button" (click)="addRole()">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </h3>
+</mat-list>
