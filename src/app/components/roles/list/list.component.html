@@ -1,7 +1,8 @@
-<p *ngIf="loading">Loading...</p>
+<p *ngIf="isLoading$ | async">Loading...</p>
+<p *ngIf="error$ | async">Something went wrong!</p>
 
-<mat-list class="roles-list" *ngIf="!loading
-  && roles && roles.length">
+<mat-list class="roles-list" *ngIf="!(isLoading$ | async)
+  && (rolesList$ | async) && (rolesList$ | async).length">
   <h3 mat-subheader class="roles-header">
     <span>Work experience</span>
     <button mat-icon-button aria-label="Add Role"
@@ -11,7 +12,7 @@
   </h3>
   <mat-divider></mat-divider>
   <mat-list-item class="role-item"
-    *ngFor="let role of roles">
+    *ngFor="let role of (rolesList$ | async)">
     <h4 mat-line>{{ role.position }}</h4>
     <h5 mat-line class="mat-accent">{{ role.company }}</h5>
     <p mat-line class="role-dates">
@@ -29,10 +30,10 @@
   </mat-list-item>
 </mat-list>
 
-<mat-list class="roles-list" *ngIf="!loading
-  && (!roles || roles && !roles.length)">
+<mat-list class="roles-list" *ngIf="!(isLoading$ | async)
+  && (!(rolesList$ | async) || (rolesList$ | async) && !(rolesList$ | async).length)">
     <h3 mat-subheader class="roles-header">
-      <span>No roles found</span>
+      <span>No experiences yet</span>
       <button mat-icon-button aria-label="Add Role"
         class="add-role-button" (click)="addRole()">
         <mat-icon>add_circle</mat-icon>

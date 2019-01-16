@@ -1,22 +1,47 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 import { Role } from '../../../models/role.model';
-import { RolesService } from '../../../services/roles.service';
+import { RootStoreState,
+         RolesStoreActions,
+         RolesStoreSelectors } from '../../../root-store';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-roles-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class RolesListComponent implements OnInit {
 
-  public loading = false;
-  public roles: Role[];
+  public rolesList$: Observable<Role[]>;
+  public error$: Observable<string>;
+  public isLoading$: Observable<boolean>;
 
-  constructor(private service: RolesService) { }
+  constructor(private store$: Store<RootStoreState.State>) { }
 
   ngOnInit() {
-    this.service.getRoles().subscribe(roles => this.roles = roles);
+    this.store$.select(RolesStoreSelectors.selectRolesState).pipe(take(1))
+      .subscribe(state => {
+        if (!state.hasLoaded) {
+          this.store$.dispatch(
+            new RolesStoreActions.LoadRequestAction()
+          );
+        }
+      });
+
+    this.rolesList$ = this.store$.select(
+      RolesStoreSelectors.selectAllRolesItems
+    );
+
+    this.error$ = this.store$.select(
+      RolesStoreSelectors.selectRolesError
+    );
+
+    this.isLoading$ = this.store$.select(
+      RolesStoreSelectors.selectRolesIsLoading
+    );
   }
 
   addRole() {
@@ -28,7 +53,11 @@ export class ListComponent implements OnInit {
   }
 
   deleteRole(role: Role) {
-    console.log('Delete Role');
+    if ( confirm(`Role "${role.position}" will be deleted.`) ) {
+      this.store$.dispatch(
+        new RolesStoreActions.DeleteRequestAction(role.id)
+      );
+    }
   }
 
 }

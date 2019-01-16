@@ -32,7 +32,7 @@ export class RolesService {
     const rolesList: Role[] = [];
 
     for (let i = 1; i < 6; i++) {
-      const role: Role = this.roleMock;
+      const role: Role = {...this.roleMock};
       role.id = i;
       rolesList.push(role);
     }
@@ -42,5 +42,18 @@ export class RolesService {
 
   public getRoleById(id: number): Observable<Role> {
     return of(this.roleMock);
+  }
+
+  public updateRole(role: Role): Observable<Role> {
+    return of(role);
+  }
+
+  public createRole(role: Role): Observable<Role> {
+    role.id = 6;
+    return of(role);
+  }
+
+  public deleteRole(id: number): Observable<number> {
+    return of(id);
   }
 }

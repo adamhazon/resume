@@ -1,2 +1,2 @@
-export { ListComponent as RolesListComponent } from './list/list.component';
-export { DetailsComponent as RolesDetailsComponent } from './details/details.component';
+export { RolesListComponent } from './list/list.component';
+export { RoleDetailsComponent } from './details/details.component';
