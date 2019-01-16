@@ -17,7 +17,7 @@
     <h5 mat-line class="mat-accent">{{ role.company }}</h5>
     <p mat-line class="role-dates">
       {{ role.startDate | date: 'MMMM y' }}
-      - {{ role.endDate | date: 'MMMM y' }}
+      - {{ role.current ? 'current' : (role.endDate | date: 'MMMM y') }}
     </p>
     <button mat-icon-button aria-label="Edit Role"
       class="edit" (click)="editRole(role)">

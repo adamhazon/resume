@@ -18,6 +18,7 @@
     top: 0;
     left: 0;
     z-index: 2;
+    cursor: pointer;
 
     .profile-image {
       width: 96px;
@@ -32,6 +33,10 @@
       border-radius: 50%;
       border: 2px solid mat-color($accent, A200);
       box-sizing: border-box;
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 

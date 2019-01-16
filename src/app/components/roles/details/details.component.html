@@ -1,3 +1,25 @@
-<p>
-  details works!
-</p>
+<mat-list>
+  <h3 mat-subheader class="buttons-wrapper">
+    <button mat-icon-button aria-label="Home"
+      class="home-button" routerLink="/">
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Edit Role"
+      class="edit-role-button" (click)="editRole(role)">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </h3>
+</mat-list>
+
+<mat-card class="role-card mat-typography" *ngIf="role">
+  <h2>
+    <span class="position">{{ role.position }}</span>
+    <span class="period">{{ role.startDate | date }} -
+      {{ role.current ? 'current' : (role.endDate | date) }}</span>
+  </h2>
+  <h3>{{ role.company }}</h3>
+
+  <pre class="role-description">
+    {{ role.description }}
+  </pre>
+</mat-card>

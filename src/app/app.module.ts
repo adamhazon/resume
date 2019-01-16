@@ -16,7 +16,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -39,7 +41,9 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatListModule,
     MatButtonModule,
     MatDividerModule,
+    MatCardModule,
     MatInputModule,
+    MatCheckboxModule,
     MatDialogModule,
     MatDatepickerModule,
     MatMomentDateModule

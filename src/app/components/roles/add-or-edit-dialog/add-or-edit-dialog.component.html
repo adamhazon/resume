@@ -9,24 +9,25 @@
     [formGroup]="roleForm">
     <div>
       <mat-form-field class="role-position-field" color="accent">
-        <mat-label>Role position</mat-label>
+        <mat-label>Position</mat-label>
         <input matInput type="text" formControlName="rolePositionControl">
         <mat-error *ngIf="roleFormPosition.errors">
-          Role position is <strong>required</strong>
+          Position is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field class="role-company-field" color="accent">
-        <mat-label>Role company</mat-label>
+        <mat-label>Company</mat-label>
         <input matInput type="text" formControlName="roleCompanyControl">
         <mat-error *ngIf="roleFormCompany.errors">
-          Role company is <strong>required</strong>
+          Company is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </div>
-    <div>
-      <mat-form-field class="role-start-date-field" color="accent">
+    <div class="dates-wrapper">
+      <mat-form-field class="role-start-date-field" color="accent"
+        [ngClass]="{'full-width': currentRole.value}">
         <mat-label>Start date</mat-label>
         <input matInput type="text" formControlName="roleStartDateControl"
           [matDatepicker]="startDateDatePicker" readonly
@@ -39,7 +40,7 @@
           (monthSelected)="chosenMonthHandler($event, 'roleStartDateControl', startDateDatePicker)"
           startView="multi-year"></mat-datepicker>
       </mat-form-field>
-      <mat-form-field class="role-end-date-field" color="accent">
+      <mat-form-field class="role-end-date-field" color="accent" *ngIf="!currentRole.value">
         <mat-label>End date</mat-label>
         <input matInput type="text" formControlName="roleEndDateControl"
           [matDatepicker]="endtDateDatePicker" readonly
@@ -51,6 +52,23 @@
           (yearSelected)="chosenYearHandler($event, 'roleEndDateControl')"
           (monthSelected)="chosenMonthHandler($event, 'roleEndDateControl', endtDateDatePicker)"
           startView="multi-year"></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="current-wrapper">
+      <mat-checkbox formControlName="roleCurrentControl"
+                    class="role-current-field"
+                    color="accent"
+                    matInput
+                    labelPosition="before">
+        Current position
+      </mat-checkbox>
+    </div>
+    <div>
+      <mat-form-field class="role-description-field" color="accent">
+        <mat-label>Description</mat-label>
+        <textarea matInput type="text" formControlName="roleDescriptionControl"
+          cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="5">
+        </textarea>
       </mat-form-field>
     </div>
   </form>

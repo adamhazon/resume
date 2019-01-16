@@ -1,0 +1,32 @@
+@import '../../../../constants.scss';
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.role-card {
+  h2 {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+
+    .position {
+      flex: 1;
+    }
+
+    .period {
+      flex: 0 0 auto;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  h3 {
+    color: mat-color($accent, A200);
+  }
+
+  .role-description {
+    white-space: pre-line;
+  }
+}

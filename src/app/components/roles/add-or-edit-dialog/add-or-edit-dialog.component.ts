@@ -68,6 +68,16 @@ export class AddOrEditRoleDialogComponent implements OnInit {
         this.data.type === 'edit' ?
         this.validateDate(moment(this.data.role.endDate)) :
         null
+      ),
+      'roleDescriptionControl': new FormControl(
+        this.data.type === 'edit' ?
+        this.data.role.description :
+        null
+      ),
+      'roleCurrentControl': new FormControl(
+        this.data.type === 'edit' ?
+        this.data.role.current :
+        null
       )
     });
   }
@@ -78,7 +88,9 @@ export class AddOrEditRoleDialogComponent implements OnInit {
       position: this.roleForm.get('rolePositionControl').value,
       company: this.roleForm.get('roleCompanyControl').value,
       startDate: this.roleForm.get('roleStartDateControl').value,
-      endDate: this.roleForm.get('roleEndDateControl').value
+      endDate: this.roleForm.get('roleEndDateControl').value,
+      current: this.roleForm.get('roleCurrentControl').value,
+      description: this.roleForm.get('roleDescriptionControl').value
     };
     if (this.data.type === 'edit') {
       newRole['id'] = this.data.role.id;
@@ -111,6 +123,10 @@ export class AddOrEditRoleDialogComponent implements OnInit {
 
   get roleFormCompany() {
     return this.roleForm.get('roleCompanyControl');
+  }
+
+  get currentRole() {
+    return this.roleForm.get('roleCurrentControl');
   }
 
   private validateDate(date: moment.Moment): moment.Moment | null {

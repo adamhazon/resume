@@ -20,7 +20,32 @@
     margin-bottom: 8px;
   }
 
-  .role-start-date-field {
-    margin-right: 8px;
+  .dates-wrapper {
+    display: flex;
+
+    .role-start-date-field {
+      flex: 1;
+      width: 50%;
+      padding-right: 8px;
+      box-sizing: border-box;
+
+      &.full-width {
+        padding-right: 0;
+      }
+    }
+
+    .role-end-date-field {
+      flex: 1;
+      width: 50%;
+      padding-left: 8px;
+      box-sizing: border-box;
+    }
   }
+
+  .current-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 1.25em;
+  }
+
 }
