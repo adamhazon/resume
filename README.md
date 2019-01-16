@@ -1,27 +1,25 @@
 # Resume
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+This project was created to present a nice Frontend structure for a basic application. Everything is mobile friendly, check it out!
 
-## Development server
+You can click on any list item and move to the details page. You can add, edit and delete item and I'll add more features in the future.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+It shows basic API functions. No backend or database at the moment, all changes happens in the store. (so don't be afraid to make changes - it will come back on refresh)
 
-## Code scaffolding
+It was built using Angular-cli, NgRx & Angular Material.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+It's just the beginning and I plan to continue with this project.
+You can see it live and play with it on `http://adamhazon.com`.
 
-## Build
+### Development server
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Run `npm install`
 
-## Running unit tests
+- Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+
+### Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+#### Enjoy :smile:
