@@ -15,6 +15,15 @@ export const selectRolesState:
 export const selectAllRolesItems: (state: object)
   => Role[] = featureAdapter.getSelectors(selectRolesState).selectAll;
 
+export const selectRoleById = (id: number) =>
+  createSelector(selectAllRolesItems, (allRoles: Role[]) => {
+    if (allRoles) {
+      return allRoles.find(role => role.id === id);
+    } else {
+      return null;
+    }
+  });
+
 export const selectRolesError: MemoizedSelector<object, any> = createSelector(
   selectRolesState,
   getError

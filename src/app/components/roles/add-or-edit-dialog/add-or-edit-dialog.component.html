@@ -1,0 +1,63 @@
+<div mat-dialog-title class="dialog-title">
+  <h2>
+    <span class="dialog-type">{{ data.type }}</span>
+    Role
+  </h2>
+</div>
+<mat-dialog-content>
+  <form id="roleForm" class="role-form" (ngSubmit)="onSubmit()"
+    [formGroup]="roleForm">
+    <div>
+      <mat-form-field class="role-position-field" color="accent">
+        <mat-label>Role position</mat-label>
+        <input matInput type="text" formControlName="rolePositionControl">
+        <mat-error *ngIf="roleFormPosition.errors">
+          Role position is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="role-company-field" color="accent">
+        <mat-label>Role company</mat-label>
+        <input matInput type="text" formControlName="roleCompanyControl">
+        <mat-error *ngIf="roleFormCompany.errors">
+          Role company is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="role-start-date-field" color="accent">
+        <mat-label>Start date</mat-label>
+        <input matInput type="text" formControlName="roleStartDateControl"
+          [matDatepicker]="startDateDatePicker" readonly
+          (click)="startDateDatePicker.open()">
+        <mat-datepicker-toggle matSuffix
+          [for]="startDateDatePicker">
+        </mat-datepicker-toggle>
+        <mat-datepicker touchUi #startDateDatePicker
+          (yearSelected)="chosenYearHandler($event, 'roleStartDateControl')"
+          (monthSelected)="chosenMonthHandler($event, 'roleStartDateControl', startDateDatePicker)"
+          startView="year"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="role-end-date-field" color="accent">
+        <mat-label>End date</mat-label>
+        <input matInput type="text" formControlName="roleEndDateControl"
+          [matDatepicker]="endtDateDatePicker" readonly
+          (click)="endtDateDatePicker.open()">
+        <mat-datepicker-toggle matSuffix
+          [for]="endtDateDatePicker">
+        </mat-datepicker-toggle>
+        <mat-datepicker touchUi #endtDateDatePicker
+          (yearSelected)="chosenYearHandler($event, 'roleEndDateControl')"
+          (monthSelected)="chosenMonthHandler($event, 'roleEndDateControl', endtDateDatePicker)"
+          startView="year"></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button form="roleForm"
+    [disabled]="!roleForm.valid">{{ data.type === 'add' ? 'Add' : 'Save' }}
+  </button>
+</mat-dialog-actions>

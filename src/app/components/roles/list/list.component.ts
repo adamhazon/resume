@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
+import { AddOrEditRoleDialogComponent } from '../add-or-edit-dialog';
 import { Role } from '../../../models/role.model';
 import { RootStoreState,
          RolesStoreActions,
@@ -19,7 +21,10 @@ export class RolesListComponent implements OnInit {
   public error$: Observable<string>;
   public isLoading$: Observable<boolean>;
 
-  constructor(private store$: Store<RootStoreState.State>) { }
+  constructor(
+    private dialog: MatDialog,
+    private store$: Store<RootStoreState.State>
+  ) { }
 
   ngOnInit() {
     this.store$.select(RolesStoreSelectors.selectRolesState).pipe(take(1))
@@ -49,7 +54,11 @@ export class RolesListComponent implements OnInit {
   }
 
   editRole(role: Role) {
-    console.log('Edit Role');
+    this.dialog.open(AddOrEditRoleDialogComponent, {
+      width: '600px',
+      maxWidth: '95vw',
+      data: {type: 'edit', role: role}
+    });
   }
 
   deleteRole(role: Role) {

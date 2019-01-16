@@ -1,7 +1,7 @@
 export interface Role {
-  id: number;
-  company: string;
+  id?: number;
   position: string;
+  company: string;
   startDate: string;
   endDate?: string;
   current?: boolean;
