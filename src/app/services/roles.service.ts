@@ -24,7 +24,7 @@ export class RolesService {
   }
 
   public createRole(role: Role): Observable<Role> {
-    role.id = 6;
+    role.id = +new Date();
     return of(role);
   }
 

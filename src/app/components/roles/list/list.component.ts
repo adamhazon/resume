@@ -50,10 +50,15 @@ export class RolesListComponent implements OnInit {
   }
 
   addRole() {
-    console.log('Add Role');
+    this.dialog.open(AddOrEditRoleDialogComponent, {
+      width: '600px',
+      maxWidth: '95vw',
+      data: {type: 'add'}
+    });
   }
 
   editRole(role: Role) {
+    event.stopPropagation();
     this.dialog.open(AddOrEditRoleDialogComponent, {
       width: '600px',
       maxWidth: '95vw',
@@ -62,6 +67,7 @@ export class RolesListComponent implements OnInit {
   }
 
   deleteRole(role: Role) {
+    event.stopPropagation();
     if ( confirm(`Role "${role.position}" will be deleted.`) ) {
       this.store$.dispatch(
         new RolesStoreActions.DeleteRequestAction(role.id)

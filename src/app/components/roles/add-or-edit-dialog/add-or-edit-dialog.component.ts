@@ -93,13 +93,13 @@ export class AddOrEditRoleDialogComponent implements OnInit {
   }
 
   chosenYearHandler(normalizedYear: Moment, controlName: string) {
-    const ctrlValue = this.roleForm.controls[controlName].value;
+    const ctrlValue = this.roleForm.controls[controlName].value || moment('2019-01');
     ctrlValue.year(normalizedYear.year());
     this.roleForm.controls[controlName].setValue(ctrlValue);
   }
 
   chosenMonthHandler(normlizedMonth: Moment, controlName: string, datepicker: MatDatepicker<Moment>) {
-    const ctrlValue = this.roleForm.controls[controlName].value;
+    const ctrlValue = this.roleForm.controls[controlName].value || moment('2019-01');
     ctrlValue.month(normlizedMonth.month());
     this.roleForm.controls[controlName].setValue(ctrlValue);
     datepicker.close();

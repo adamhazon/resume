@@ -5,8 +5,9 @@ import { Role } from '../../models';
 export const featureAdapter:
   EntityAdapter<Role> = createEntityAdapter<Role>({
     selectId: model => model.id,
-    sortComparer: (a: Role, b: Role): number =>
-      b.startDate.toString().localeCompare(a.startDate.toString())
+    sortComparer: (a: Role, b: Role): number => {
+      return +b.startDate - +a.startDate;
+    }
   });
 
 export interface State extends EntityState<Role> {

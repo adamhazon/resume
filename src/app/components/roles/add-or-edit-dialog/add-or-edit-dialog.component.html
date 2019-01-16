@@ -37,7 +37,7 @@
         <mat-datepicker touchUi #startDateDatePicker
           (yearSelected)="chosenYearHandler($event, 'roleStartDateControl')"
           (monthSelected)="chosenMonthHandler($event, 'roleStartDateControl', startDateDatePicker)"
-          startView="year"></mat-datepicker>
+          startView="multi-year"></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="role-end-date-field" color="accent">
         <mat-label>End date</mat-label>
@@ -50,7 +50,7 @@
         <mat-datepicker touchUi #endtDateDatePicker
           (yearSelected)="chosenYearHandler($event, 'roleEndDateControl')"
           (monthSelected)="chosenMonthHandler($event, 'roleEndDateControl', endtDateDatePicker)"
-          startView="year"></mat-datepicker>
+          startView="multi-year"></mat-datepicker>
       </mat-form-field>
     </div>
   </form>

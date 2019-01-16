@@ -11,7 +11,7 @@
     </button>
   </h3>
   <mat-divider></mat-divider>
-  <mat-list-item class="role-item"
+  <mat-list-item class="role-item" routerLink="/role/{{ role.id }}"
     *ngFor="let role of (rolesList$ | async)">
     <h4 mat-line>{{ role.position }}</h4>
     <h5 mat-line class="mat-accent">{{ role.company }}</h5>

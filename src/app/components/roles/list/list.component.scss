@@ -17,6 +17,7 @@
 
   .role-item {
     border-bottom: 1px solid rgba(255,255,255,.12);
+    cursor: pointer;
 
     .role-dates {
       font-size: 12px;
@@ -25,6 +26,10 @@
 
     h5 {
       color: mat-color($accent, A200);
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 }
