@@ -17,6 +17,7 @@ export interface DialogData {
   role?: Role;
 }
 
+// Customizing the datepicker date formats
 const MY_FORMATS = {
   parse: {
     dateInput: 'MM-YYYY',
@@ -48,6 +49,7 @@ export class AddOrEditRoleDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // Generate the required form fields
     this.roleForm = new FormGroup({
       'rolePositionControl': new FormControl(
         this.data.type === 'edit' ?
@@ -84,6 +86,7 @@ export class AddOrEditRoleDialogComponent implements OnInit {
 
   onSubmit() {
     this.dialogRef.close();
+    // Create a new role object to be saved
     const newRole = {
       position: this.roleForm.get('rolePositionControl').value,
       company: this.roleForm.get('roleCompanyControl').value,
@@ -92,7 +95,9 @@ export class AddOrEditRoleDialogComponent implements OnInit {
       current: this.roleForm.get('roleCurrentControl').value,
       description: this.roleForm.get('roleDescriptionControl').value
     };
+    // create or update a role, depending on the type of the dialog
     if (this.data.type === 'edit') {
+      // Add the id in the case of editing existing role
       newRole['id'] = this.data.role.id;
       this.store$.dispatch(
         new RolesStoreActions.UpdateRequestAction(newRole)
@@ -104,12 +109,14 @@ export class AddOrEditRoleDialogComponent implements OnInit {
     }
   }
 
+  // A way to skip the day selection in the datepicker
   chosenYearHandler(normalizedYear: Moment, controlName: string) {
     const ctrlValue = this.roleForm.controls[controlName].value || moment('2019-01');
     ctrlValue.year(normalizedYear.year());
     this.roleForm.controls[controlName].setValue(ctrlValue);
   }
 
+  // A way to skip the day selection in the datepicker
   chosenMonthHandler(normlizedMonth: Moment, controlName: string, datepicker: MatDatepicker<Moment>) {
     const ctrlValue = this.roleForm.controls[controlName].value || moment('2019-01');
     ctrlValue.month(normlizedMonth.month());
@@ -117,6 +124,8 @@ export class AddOrEditRoleDialogComponent implements OnInit {
     datepicker.close();
   }
 
+
+  // Quick access to some of the fields
   get roleFormPosition() {
     return this.roleForm.get('rolePositionControl');
   }
@@ -129,6 +138,7 @@ export class AddOrEditRoleDialogComponent implements OnInit {
     return this.roleForm.get('roleCurrentControl');
   }
 
+  // make sure that the dates that are stored are correct
   private validateDate(date: moment.Moment): moment.Moment | null {
     return moment(date, 'MM-YYYY', true).isValid()
     ? moment(date)

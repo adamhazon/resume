@@ -31,6 +31,7 @@ export class RoleDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    // Listen for changes in the route and take the role id from the url
     this.route.params.pipe(takeUntil(this.unsubscribe$)).subscribe(params => {
       this.currentRoleId = +params['id'];
       this.role$ = this.store$.select(
@@ -38,6 +39,7 @@ export class RoleDetailsComponent implements OnInit, OnDestroy {
       );
     });
 
+    // Check if the role is in store, if not dispatch the action to load just the required one
     this.role$.pipe(takeUntil(this.unsubscribe$)).subscribe(role => {
       if (!role) {
         this.store$.dispatch(
@@ -49,11 +51,13 @@ export class RoleDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
+  // Unsubscribe when component destroyed
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 
+  // Open the edit role dialog
   editRole(role: Role) {
     event.stopPropagation();
     this.dialog.open(AddOrEditRoleDialogComponent, {

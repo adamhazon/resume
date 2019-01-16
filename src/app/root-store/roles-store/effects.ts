@@ -19,6 +19,7 @@ export class RolesStoreEffects {
     private store$: Store<RootStoreState.State>,
   ) {}
 
+  // Handle a request for loading all roles
   @Effect()
   loadRolesEffect$: Observable<Action> = this.actions$.pipe(
     ofType<featureActions.LoadRequestAction>(
@@ -36,6 +37,7 @@ export class RolesStoreEffects {
     ))
   );
 
+  // Handle a request for loading one role
   @Effect()
   loadRoleEffect$: Observable<Action> = this.actions$.pipe(
     ofType<featureActions.LoadOneRequestAction>(
@@ -53,6 +55,7 @@ export class RolesStoreEffects {
     ))
   );
 
+  // Handle a request for updating a role
   @Effect()
   updateRoleEffect$: Observable<Action> = this.actions$.pipe(
     ofType<featureActions.UpdateRequestAction>(
@@ -71,6 +74,7 @@ export class RolesStoreEffects {
     ))
   );
 
+  // Handle a request for creating a new role
   @Effect()
   createRoleEffect$: Observable<Action> = this.actions$.pipe(
     ofType<featureActions.CreateRequestAction>(
@@ -86,6 +90,7 @@ export class RolesStoreEffects {
     ))
   );
 
+  // Handle a request for deleting a role
   @Effect()
   deleteRoleEffect$: Observable<Action> = this.actions$.pipe(
     ofType<featureActions.DeleteRequestAction>(

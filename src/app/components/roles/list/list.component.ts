@@ -29,6 +29,7 @@ export class RolesListComponent implements OnInit {
   ngOnInit() {
     this.store$.select(RolesStoreSelectors.selectRolesState).pipe(take(1))
       .subscribe(state => {
+        // Check if roles already in the store, if not dispatch the action to load them
         if (!state.hasLoaded) {
           this.store$.dispatch(
             new RolesStoreActions.LoadRequestAction()
@@ -36,19 +37,23 @@ export class RolesListComponent implements OnInit {
         }
       });
 
+    // Load the roles from the store
     this.rolesList$ = this.store$.select(
       RolesStoreSelectors.selectAllRolesItems
     );
 
+    // Used to errors handling
     this.error$ = this.store$.select(
       RolesStoreSelectors.selectRolesError
     );
 
+    // Used to show loading indicator
     this.isLoading$ = this.store$.select(
       RolesStoreSelectors.selectRolesIsLoading
     );
   }
 
+  // Open a dialog to create a new role
   addRole() {
     this.dialog.open(AddOrEditRoleDialogComponent, {
       width: '600px',
@@ -57,6 +62,7 @@ export class RolesListComponent implements OnInit {
     });
   }
 
+  // Open a dialog to edit an existing role
   editRole(role: Role) {
     event.stopPropagation();
     this.dialog.open(AddOrEditRoleDialogComponent, {
@@ -66,6 +72,7 @@ export class RolesListComponent implements OnInit {
     });
   }
 
+  // Deleting a role with a confirm popup
   deleteRole(role: Role) {
     event.stopPropagation();
     if ( confirm(`Role "${role.position}" will be deleted.`) ) {
