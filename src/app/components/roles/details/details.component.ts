@@ -59,7 +59,6 @@ export class RoleDetailsComponent implements OnInit, OnDestroy {
 
   // Open the edit role dialog
   editRole(role: Role) {
-    event.stopPropagation();
     this.dialog.open(AddOrEditRoleDialogComponent, {
       width: '600px',
       maxWidth: '95vw',

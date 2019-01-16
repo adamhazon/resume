@@ -20,11 +20,11 @@
       - {{ role.current ? 'current' : (role.endDate | date: 'MMMM y') }}
     </p>
     <button mat-icon-button aria-label="Edit Role"
-      class="edit" (click)="editRole(role)">
+      class="edit" (click)="editRole($event, role)">
       <mat-icon>edit</mat-icon>
     </button>
     <button mat-icon-button aria-label="Edit Role"
-      class="edit" (click)="deleteRole(role)">
+      class="edit" (click)="deleteRole($event, role)">
       <mat-icon>delete_forever</mat-icon>
     </button>
   </mat-list-item>

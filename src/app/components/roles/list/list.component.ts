@@ -63,8 +63,8 @@ export class RolesListComponent implements OnInit {
   }
 
   // Open a dialog to edit an existing role
-  editRole(role: Role) {
-    event.stopPropagation();
+  editRole(e, role: Role) {
+    e.stopPropagation();
     this.dialog.open(AddOrEditRoleDialogComponent, {
       width: '600px',
       maxWidth: '95vw',
@@ -73,8 +73,8 @@ export class RolesListComponent implements OnInit {
   }
 
   // Deleting a role with a confirm popup
-  deleteRole(role: Role) {
-    event.stopPropagation();
+  deleteRole(e, role: Role) {
+    e.stopPropagation();
     if ( confirm(`Role "${role.position}" will be deleted.`) ) {
       this.store$.dispatch(
         new RolesStoreActions.DeleteRequestAction(role.id)
