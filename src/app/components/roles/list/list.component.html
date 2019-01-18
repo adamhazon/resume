@@ -5,7 +5,7 @@
   && (rolesList$ | async) && (rolesList$ | async).length">
   <h3 mat-subheader class="roles-header">
     <span>Work experience</span>
-    <button mat-icon-button aria-label="Add Role"
+    <button mat-icon-button aria-label="Add Role" color="accent"
       class="add-role-button" (click)="addRole()">
       <mat-icon>add_circle</mat-icon>
     </button>
@@ -19,12 +19,12 @@
       {{ role.startDate | date: 'MMMM y' }}
       - {{ role.current ? 'current' : (role.endDate | date: 'MMMM y') }}
     </p>
-    <button mat-icon-button aria-label="Edit Role"
+    <button mat-icon-button aria-label="Edit Role" color="primary"
       class="edit" (click)="editRole($event, role)">
       <mat-icon>edit</mat-icon>
     </button>
-    <button mat-icon-button aria-label="Edit Role"
-      class="edit" (click)="deleteRole($event, role)">
+    <button mat-icon-button aria-label="Delete Role"
+      class="delete" (click)="deleteRole($event, role)">
       <mat-icon>delete_forever</mat-icon>
     </button>
   </mat-list-item>

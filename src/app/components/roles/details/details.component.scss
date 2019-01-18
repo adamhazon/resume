@@ -18,12 +18,12 @@
     .period {
       flex: 0 0 auto;
       font-size: 14px;
-      color: rgba(255, 255, 255, 0.54);
+      color: $black-opac;
     }
   }
 
   h3 {
-    color: mat-color($accent, A200);
+    color: mat-color($primary);
   }
 
   .role-description {

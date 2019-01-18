@@ -1,4 +1,6 @@
 @import "~@angular/material/theming";
 
-$primary: mat-palette($mat-purple);
-$accent: mat-palette($mat-green);
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-yellow);
+
+$black-opac: rgba(0, 0, 0, 0.54);
